@@ -1,0 +1,41 @@
+<html>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <body>
+        <h1>RTMP Push</h1>
+        <div class="table-responsive">
+            <table class="table">
+            <thead>
+                <td scope="col">#</td>
+                <td scope="col">Name</td>
+                <td scope="col">Address</td>
+                <td scope="col">Type</td>
+                <td scope="col">Status</td>
+                <td scope="col">Last Publish Date</td>
+                <td scope="col">Create Date</td>
+                <td scope="col">Player Link</td>
+            </thead>
+            <tbody>
+            {% for stream in streams %}
+            <tr>
+                <td>{{ stream.id }}</td>
+                <td>{{ stream.name }}</td>
+                <td>{{ stream.address }}</td>
+                <td>{{ stream.type }}</td>
+                <td>{% if stream.status > 0  %}STREAMING{% else %}STOPPED{% endif %}</td>
+                <td>{{ stream.lastpubdate }}</td>
+                <td>{{ stream.createdate }}</td>
+                <td><a href="http://3.7.200.223/hls/{{ stream.name }}.m3u8">View Link</a></td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+        </table>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/js/all.js" integrity="sha512-3g7yqwo1stj1EMzNXYPbV8pqgW0ZhaQsi9iyMP+hvQCIFcdt0AWw5onarTYjklFtIuCf/RvE2MGnr+5tZ1WzFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </body>
+</html>
